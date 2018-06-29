@@ -31,7 +31,7 @@ public class PatientControllerTest {
 
     @Test
     public void scheduleAppointmentWhenPatientHasCoverage() throws Exception {
-        Appointment appointment = new Appointment();
+        AppointmentRequest appointment = new AppointmentRequest();
 
         appointment.setFirstName("Madhu");
         appointment.setLastName("Sambangi");

@@ -13,14 +13,13 @@ public interface HealthFirstService {
 
     @RequestMapping(method = RequestMethod.POST, path = "/members")
     @Headers("Accept:application/json;charset=UTF-8")
-    HealthFirstMember verifyCoverage(@RequestBody HealthFirstMember member);
+    HealthFirstMemberResponse verifyCoverage(@RequestBody HealthFirstMemberRequest member);
 
     @Component
     class HealthFirstServiceFallback implements HealthFirstService {
         @Override
-        public HealthFirstMember verifyCoverage(@RequestBody HealthFirstMember member) {
-            member.setCoverage(HealthFirstMember.Coverage.NONE);
-            return member;
+        public HealthFirstMemberResponse verifyCoverage(@RequestBody HealthFirstMemberRequest member) {
+            return new HealthFirstMemberResponse(member.getMemberId(), HealthFirstMemberResponse.Coverage.NONE);
         }
     }
 }

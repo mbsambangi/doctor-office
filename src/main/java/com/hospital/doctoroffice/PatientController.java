@@ -16,14 +16,15 @@ public class PatientController {
     }
 
     @PostMapping("/appointments")
-    public AppointmentResponse appointments(@RequestBody Appointment appointment) {
+    public AppointmentResponse appointments(@RequestBody AppointmentRequest appointment) {
         AppointmentResponse response = new AppointmentResponse();
-        HealthFirstMember member = new HealthFirstMember();
+
+        HealthFirstMemberRequest member = new HealthFirstMemberRequest();
         member.setMemberId(appointment.getMemberId());
 
-        member = healthFirstService.verifyCoverage(member);
+        HealthFirstMemberResponse healthFirstMember = healthFirstService.verifyCoverage(member);
 
-        if (member.getCoverage() == HealthFirstMember.Coverage.MEDICAL) {
+        if (healthFirstMember.getCoverage() == HealthFirstMemberResponse.Coverage.MEDICAL) {
             response.setStatus(AppointmentResponse.AppointmentStatus.CONFIRMED);
         }
 

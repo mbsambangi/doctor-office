@@ -7,12 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class HealthFirstMember {
-
+public class AppointmentRequest {
+    private String firstName;
+    private String lastName;
     private String memberId;
-    private Coverage coverage;
-
-    public enum Coverage {
-        MEDICAL, DENTAL, VISION, NONE
-    }
+    private String dateOfBirth;
 }
