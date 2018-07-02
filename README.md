@@ -41,7 +41,7 @@ Member-Function Stub dependency listed just to grab the stubs.jar from maven rep
 ### Code Explaination
 Feigin client to call the Health Insurance check Function serive.
 
-{% highlight java %}
+```
 @FeignClient(name = "HealthFirstService",
     url = "http://localhost:8080", fallback = HealthFirstService.HealthFirstServiceFallback.class)
 public interface HealthFirstService {
@@ -59,15 +59,14 @@ public interface HealthFirstService {
         }
     }
 }
-{% endhighlight %}
+```
 
 ### Contract
 Following annotation runs the member-function stub at localhost port 8080.
-
-{% highlight java %}
+```
 @AutoConfigureStubRunner(ids = "com.healthfirst:member-function:+:stubs:8080", stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 {% endhighlight %}
-
+```
 ### Run Testcase
 Now the test case passes covering end-to-end testing.
 - Calling the appointment REST controller First
@@ -120,7 +119,7 @@ MockHttpServletResponse:
            Status = 200
     Error message = null
           Headers = {Content-Type=[application/json;charset=UTF-8]}
-     Content type = application/json;charset=UTF-8
+     Content type = application/json;charset=UTF-b
              Body = {"status":"CONFIRMED"}
     Forwarded URL = null
    Redirected URL = null
